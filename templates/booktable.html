@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+
+{% block title %} services {% endblock title %}
+
+{% block body %}
+<div class="container-fluid my-1">
+	<div class="container-xxl position-relative p-0">
+		<nav class="navbar navbar-expand-lg navbar-dark bg-dark px-4 px-lg-5 py-3 py-lg-0">
+			<a href="" class="navbar-brand p-0">
+				<h1 class="text-primary m-0"><i class="fa fa-utensils me-3"></i>Bookings Open</h1>
+				<img src="https://cdn-icons-png.freepik.com/512/6030/6030216.png" style="width:200px; height:200px"
+					alt="Logo">
+			</a>
+
+			<div class="container-xxl py-5 bg-dark hero-header mb-5">
+				<div class="container text-center my-5 pt-5 pb-4">
+					<h1 class="display-3 text-white mb-3 animated slideInDown">Book a table</h1>
+					<nav aria-label="breadcrumb">
+						<ol class="breadcrumb justify-content-center text-uppercase">
+							<li class="breadcrumb-item text-white active" aria-current="page">Home/book-table</li>
+						</ol>
+					</nav>
+				</div>
+			</div>
+	</div>
+	<div class="p-5 wow fadeInUp" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
+		<h5 class="section-title ff-secondary text-start text-primary fw-normal">Reservation ------</h5>
+		<h2 style="margin: 0%;padding: o;">Book A Table Online</h2>
+		
+		<form method="POST" action="{% url 'book_table' %}">
+			{% csrf_token %}
+			<div class="row g-3">
+				<div class="col-md-6">
+					<div class="form-floating">
+						<input type="text" class="form-control" id="name" name="name" placeholder="Your Name" required>
+						<label for="name">Your Name</label>
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="form-floating">
+						<input type="email" class="form-control" id="email" name="email" placeholder="Your Email" required>
+						<label for="email">Your Email</label>
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="form-floating">
+						<input type="datetime-local" class="form-control" id="datetime" name="datetime" required>
+						<label for="datetime">Date &amp; Time</label>
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="form-floating">
+						<select class="form-select" id="people" name="people">
+							<option value="1">1 Person</option>
+							<option value="2">2 People</option>
+							<option value="3">3 People</option>
+						</select>
+						<label for="people">No Of People</label>
+					</div>
+				</div>
+				<div class="col-12">
+					<div class="form-floating">
+						<textarea class="form-control" placeholder="Special Request" id="message" name="message" style="height: 100px"></textarea>
+						<label for="message">Special Request</label>
+					</div>
+				</div>
+				<div class="col-12">
+					<button class="btn btn-primary w-100 py-3" type="submit">Book Now</button>
+				</div>
+			</div>
+		</form>
+		
+{% endblock body %}
+
