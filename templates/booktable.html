@@ -3,72 +3,110 @@
 {% block title %} services {% endblock title %}
 
 {% block body %}
-<div class="container-fluid my-1">
-	<div class="container-xxl position-relative p-0">
-		<nav class="navbar navbar-expand-lg navbar-dark bg-dark px-4 px-lg-5 py-3 py-lg-0">
-			<a href="" class="navbar-brand p-0">
-				<h1 class="text-primary m-0"><i class="fa fa-utensils me-3"></i>Bookings Open</h1>
-				<img src="https://cdn-icons-png.freepik.com/512/6030/6030216.png" style="width:200px; height:200px"
-					alt="Logo">
-			</a>
+<h1 style="text-align: center; margin: 0;padding: 0;">Welcome to Reservation</h1>
 
-			<div class="container-xxl py-5 bg-dark hero-header mb-5">
-				<div class="container text-center my-5 pt-5 pb-4">
-					<h1 class="display-3 text-white mb-3 animated slideInDown">Book a table</h1>
-					<nav aria-label="breadcrumb">
-						<ol class="breadcrumb justify-content-center text-uppercase">
-							<li class="breadcrumb-item text-white active" aria-current="page">Home/book-table</li>
-						</ol>
-					</nav>
-				</div>
-			</div>
-	</div>
-	<div class="p-5 wow fadeInUp" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
-		<h5 class="section-title ff-secondary text-start text-primary fw-normal">Reservation ------</h5>
-		<h2 style="margin: 0%;padding: o;">Book A Table Online</h2>
+<div class="container">
+    <div class="row align-items-center">
+        <!-- Left Side:  -->
+        <div class="col-md-6" >
+            <img src="https://cdn-icons-png.flaticon.com/128/17441/17441689.png" alt="Restaurant" class="img-fluid rounded">
+            <h4 class="mt-3">
+                Enjoy a fine dining experience with our exclusive reservations. Book a table online and indulge in exquisite flavors and a warm ambiance.
+			</h4>
+        </div>
+
+        <!-- Right Side: -->
+        <div class="col-md-6">
+            <div class="p-5 wow fadeInUp" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
+                <h5 class="section-title ff-secondary text-start text-primary fw-normal">Reservation ------</h5>
+                <h2 style="margin: 0%; padding: 0;">Book A Table Online</h2>
+
+                <form method="POST" action="{% url 'book_table' %}">
+                    {% csrf_token %}
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <div class="form-floating">
+                                <input type="text" class="form-control" id="name" name="name" placeholder="Your Name" required>
+                                <label for="name">Your Name</label>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-floating">
+                                <input type="email" class="form-control" id="email" name="email" placeholder="Your Email" required>
+                                <label for="email">Your Email</label>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-floating">
+                                <input type="datetime-local" class="form-control" id="datetime" name="datetime" required>
+                                <label for="datetime">Date &amp; Time</label>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-floating">
+                                <select class="form-select" id="people" name="people">
+                                    <option value="1">1 Person</option>
+                                    <option value="2">2 People</option>
+                                    <option value="3">3 People</option>
+                                </select>
+                                <label for="people">No Of People</label>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="form-floating">
+                                <textarea class="form-control" placeholder="Special Request" id="message" name="message" style="height: 100px"></textarea>
+                                <label for="message">Special Request</label>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <button class="btn btn-primary w-100 py-3" type="submit">Book Now</button>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<div class="container-fluid bg-dark text-light footer pt-5 mt-5 wow fadeIn" data-wow-delay="0.1s" style="visibility: visible; animation-delay: 0.1s; animation-name: fadeIn;">
+			<div class="container py-5">
+				<div class="row g-5">
+					<div class="col-lg-3 col-md-6">
+						<h4 class="section-title ff-secondary text-start text-primary fw-normal mb-4">General</h4>
+						<a class="btn btn-link" href="/about">About Us</a>
+						<a class="btn btn-link" href="/contact">Contact Us</a>
+						<a class="btn btn-link" href="/Menu">Menu Items</a>
+						<a class="btn btn-link" href="/">Home Page</a>
+                        <a class="btn btn-link" href="/chef_Detail">Chef Details</a>
+
+					</div>
+					<div class="col-lg-3 col-md-6">
+						<h4 class="section-title ff-secondary text-start text-primary fw-normal mb-4">Contact</h4>
+						<p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>Zeromile,Muzaffarpur,Bihar</p>
+						<p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>Pincode :- 842004</p>
 		
-		<form method="POST" action="{% url 'book_table' %}">
-			{% csrf_token %}
-			<div class="row g-3">
-				<div class="col-md-6">
-					<div class="form-floating">
-						<input type="text" class="form-control" id="name" name="name" placeholder="Your Name" required>
-						<label for="name">Your Name</label>
+						<p class="mb-2"><i class="fa fa-phone-alt me-3"></i>9543678923</p>
 					</div>
-				</div>
-				<div class="col-md-6">
-					<div class="form-floating">
-						<input type="email" class="form-control" id="email" name="email" placeholder="Your Email" required>
-						<label for="email">Your Email</label>
+					<div class="col-lg-3 col-md-6">
+						<h4 class="section-title ff-secondary text-start text-primary fw-normal mb-4">Opening</h4>
+						<h5 class="text-light fw-normal">Monday - Friday</h5>
+						<p>10AM - 09PM</p>
+						<h5 class="text-light fw-normal">Saturday</h5>
+						<p>11AM - 09PM</p>
 					</div>
-				</div>
-				<div class="col-md-6">
-					<div class="form-floating">
-						<input type="datetime-local" class="form-control" id="datetime" name="datetime" required>
-						<label for="datetime">Date &amp; Time</label>
+					<div class="col-lg-3 col-md-6">
+						<h3 class="section-title ff-secondary text-start text-primary fw-normal mb-4">Reservation's Are Open</h3>
+						<img src="https://cdn-icons-png.freepik.com/512/6030/6030216.png" style="width:120px; height:120px"
+						alt="Logo">
+		
+						</div>
 					</div>
-				</div>
-				<div class="col-md-6">
-					<div class="form-floating">
-						<select class="form-select" id="people" name="people">
-							<option value="1">1 Person</option>
-							<option value="2">2 People</option>
-							<option value="3">3 People</option>
-						</select>
-						<label for="people">No Of People</label>
-					</div>
-				</div>
-				<div class="col-12">
-					<div class="form-floating">
-						<textarea class="form-control" placeholder="Special Request" id="message" name="message" style="height: 100px"></textarea>
-						<label for="message">Special Request</label>
-					</div>
-				</div>
-				<div class="col-12">
-					<button class="btn btn-primary w-100 py-3" type="submit">Book Now</button>
 				</div>
 			</div>
-		</form>
 		
 {% endblock body %}
 

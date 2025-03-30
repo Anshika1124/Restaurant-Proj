@@ -3,7 +3,6 @@ from datetime import datetime
 from skylight.models import Contact,Item, Cart,CartItem,Booking
 from django.contrib import messages
 from .forms import ItemForm
-from django.contrib.auth.decorators import login_required
 
 
 # Create your views here.
@@ -63,14 +62,15 @@ def menu(request):
     print("items")
     return render(request, "menu.html", {"items": items})
 
-    
+
+
 def cart(request):
-    cart = Cart.objects.filter(user=request.user).first()  # Get user's cart
+    cart = Cart.objects.filter(user=request.user).first()  
 
     if not cart:
         return render(request, 'cart.html', {'cart_items': [], 'total_price': 0})
 
-    cart_items = CartItem.objects.filter(cart=cart)  # Fetch all cart items
+    cart_items = CartItem.objects.filter(cart=cart)  
     total_price = sum(item.item.price * item.quantity for item in cart_items)
 
     return render(request, 'cart.html', {'cart_items': cart_items, 'total_price': total_price})
@@ -121,3 +121,5 @@ def add_to_cart(request, item_id):
     messages.success(request, f"{item.name} added to cart! (Quantity: {cart_item.quantity})")
     return redirect('cart')
 
+def chef_Detail(request):
+		return render(request,'chef_Detail.html')

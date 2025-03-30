@@ -133,3 +133,11 @@ STATICFILES_DIRS = [
 ]
 
 APPEND_SLASH = True
+
+import os
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "static")
+]
+
+
